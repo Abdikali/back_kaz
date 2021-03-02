@@ -1,6 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
-const userRouter = require("../routes/user.route")
+const userRouter = require("../routes/user.route");
+const taskRouter = require("../routes/task.route");
 const app = express();
 
 app.use(express.json());
@@ -10,8 +11,9 @@ app.get("/", (req, res) => {
 });
 
 app.use("/users", userRouter);
+app.use("/tasks", taskRouter);
 
-mongoose.connect("mongodb://127.0.0.1:27017/users", {
+mongoose.connect("mongodb://127.0.0.1:27017/back_kaz", {
   useNewUrlParser: true,
   useUnifiedTopology: true
 }).then(() => console.log("Connected"))
